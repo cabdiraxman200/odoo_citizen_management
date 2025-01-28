@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="0">
+        <!-- Define a new module category -->
+        <record id="module_category_hospital" model="ir.module.category">
+            <field name="name">hospital</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <!-- Define a Receptionist group -->
+        <record id="group_hospital_receptionist" model="res.groups">
+            <field name="name">Receptionist</field>
+            <field name="category_id" ref="module_category_hospital"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">This user will have access to appointments</field>
+        </record>
+
+        <!-- Define a Doctors group -->
+        <record id="group_hospital_doctors" model="res.groups">
+            <field name="name">Doctors</field>
+            <field name="category_id" ref="module_category_hospital"/>
+            <field name="implied_ids" eval="[(4, ref('group_hospital_receptionist'))]"/>
+            <field name="comment">This user will have access to patient details</field>
+        </record>
+        <!--          creating Reception_appointment_rule-->
+        <record id="receptionist_own_appointment_rule" model="ir.rule">
+            <field name="name">receptionist:view own records</field>
+            <field name="model_id" ref="model_hospital_appointment"/>
+            <field eval="False" name="global"/>
+            <field name="groups" eval="[Command.set([ref('group_hospital_receptionist')])]"/>
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
+        </record>
+        <record id="doctors_view_all_appointment_rule" model="ir.rule">
+            <field name="name">doctors:view own records</field>
+            <field name="model_id" ref="model_hospital_appointment"/>
+            <field eval="False" name="global"/>
+            <field name="groups" eval="[Command.set([ref('group_hospital_doctors')])]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+    </data>
+</odoo>
