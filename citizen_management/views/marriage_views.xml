@@ -1,0 +1,59 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_citizen_marriage_tree" model="ir.ui.view">
+        <field name="name">citizen.marriage.tree</field>
+        <field name="model">citizen.marriage</field>
+        <field name="arch" type="xml">
+            <tree string="Marriage Records">
+                <field name="citizen_id"/>
+                <field name="bride"/>
+                <field name="sheikh"/>
+                <field name="witness_one"/>
+                <field name="witness_two"/>
+                <field name="marriage_date"/>
+                <field name="location"/>
+                <field name="dowry"/>
+                <field name="marriage_of_money"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Form View -->
+    <record id="view_citizen_marriage_form" model="ir.ui.view">
+        <field name="name">citizen.marriage.form</field>
+        <field name="model">citizen.marriage</field>
+        <field name="arch" type="xml">
+            <form string="Marriage Record">
+                <sheet>
+                    <group>
+                        <field name="citizen_id"/>
+                        <field name="bride"/>
+                        <field name="sheikh"/>
+                        <field name="witness_one"/>
+                        <field name="witness_two"/>
+                        <field name="marriage_date"/>
+                        <field name="location"/>
+                        <field name="dowry"/>
+                        <field name="marriage_of_money"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_citizen_marriage" model="ir.actions.act_window">
+        <field name="name">Marriage Records</field>
+        <field name="res_model">citizen.marriage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="citizen_management.view_citizen_marriage_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_create">
+                Click to add a new marriage record.
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_citizen_marriage"
+              name="Marriage Records"
+              parent="menu_citizen_services"
+              action="action_citizen_marriage"/>
+</odoo>

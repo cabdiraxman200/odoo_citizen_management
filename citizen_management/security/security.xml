@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="0">
+        <!-- Define a new module category -->
+        <record id="module_category_citizen" model="ir.module.category">
+            <field name="name">Citizen</field>
+            <field name="sequence">1</field>
+        </record>
+
+       <!-- Define Location Manager group -->
+<record id="group_citizen_location_manager" model="res.groups">
+    <field name="name">Location Manager</field>
+    <field name="category_id" ref="citizen_management.module_category_citizen"/>
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    <field name="comment">This user will have access to Location Registration</field>
+</record>
+
+<!-- Define Citizen Manager group -->
+<record id="group_citizen_citizen_manager" model="res.groups">
+    <field name="name">Citizen Manager</field>
+    <field name="category_id" ref="citizen_management.module_category_citizen"/>
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    <field name="comment">This user will have access to Citizen Registation</field>
+</record>
+
+<!-- Define Admin group -->
+<record id="group_citizen_admin" model="res.groups">
+    <field name="name">Admin</field>
+    <field name="category_id" ref="citizen_management.module_category_citizen"/>
+    <field name="implied_ids" eval="[
+        (4, ref('citizen_management.group_citizen_location_manager')),
+        (4, ref('citizen_management.group_citizen_citizen_manager'))
+    ]"/>
+    <field name="comment">This user will have access to both Location Registration and Citizen Management</field>
+</record>
+
+        <!--          creating Reception_appointment_rule-->
+
+<!--        <record id="receptionist_own_appointment_rule" model="ir.rule">-->
+<!--            <field name="name">receptionist:view own records</field>-->
+<!--            <field name="model_id" ref="model_hospital_appointment"/>-->
+<!--            <field eval="False" name="global"/>-->
+<!--            <field name="groups" eval="[Command.set([ref('group_hospital_receptionist')])]"/>-->
+<!--            <field name="domain_force">[('create_uid','=',user.id)]</field>-->
+<!--        </record>-->
+
+<!--        <record id="doctors_view_all_appointment_rule" model="ir.rule">-->
+<!--            <field name="name">doctors:view own records</field>-->
+<!--            <field name="model_id" ref="model_hospital_appointment"/>-->
+<!--            <field eval="False" name="global"/>-->
+<!--            <field name="groups" eval="[Command.set([ref('group_hospital_doctors')])]"/>-->
+<!--            <field name="domain_force">[]</field>-->
+<!--        </record>-->
+
+
+    </data>
+</odoo>

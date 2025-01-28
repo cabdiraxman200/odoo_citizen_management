@@ -1,0 +1,49 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_citizen_birth_tree" model="ir.ui.view">
+        <field name="name">citizen.birth.tree</field>
+        <field name="model">citizen.birth</field>
+        <field name="arch" type="xml">
+            <tree string="Birth Records">
+                <field name="citizen_id"/>
+                <field name="birth_date"/>
+                <field name="place_of_birth_id"/>
+                <field name="birth_of_money"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Form View -->
+    <record id="view_citizen_birth_form" model="ir.ui.view">
+        <field name="name">citizen.birth.form</field>
+        <field name="model">citizen.birth</field>
+        <field name="arch" type="xml">
+            <form string="Birth Record">
+                <sheet>
+                    <group>
+                        <field name="citizen_id"/>
+                        <field name="birth_date"/>
+                        <field name="place_of_birth_id"/>
+                        <field name="birth_of_money"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_citizen_birth" model="ir.actions.act_window">
+        <field name="name">Birth Records</field>
+        <field name="res_model">citizen.birth</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_citizen_birth_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_create">
+                Click to add a new birth record.
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_citizen_birth"
+              name="Birth Records"
+              parent="menu_citizen_services"
+              action="action_citizen_birth"/>
+</odoo>

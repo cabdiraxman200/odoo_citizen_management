@@ -1,0 +1,39 @@
+<odoo>
+    <record id="view_region_tree" model="ir.ui.view">
+        <field name="name">region.tree</field>
+        <field name="model">citizen.region</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                  <field name="description"/>
+                <field name="state_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_region_form" model="ir.ui.view">
+        <field name="name">region.form</field>
+        <field name="model">citizen.region</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" string="Region"/>
+                        <field name="description"/>
+                        <field name="state_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_region_list" model="ir.actions.act_window">
+        <field name="name">Regions</field>
+        <field name="res_model">citizen.region</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     <!-- Submenu for Regions -->
+    <menuitem id="menu_region"
+              name="Regions"
+              action="action_region_list"
+              parent="menu_location_master"  sequence="2" />
+
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <!-- Root Menu:Citizen Management -->
+    <menuitem id="menu_citizen_root"
+              name="Citizen Management"
+               web_icon="citizen_management,static/description/icon.png"
+              sequence="1" />
+<!--     location Registration-->
+     <menuitem id="menu_location_master"
+              name="Location Registration"
+             parent= "menu_citizen_root"/>
+
+     <!--     Citizen Registration-->
+     <menuitem id="menu_citizen_master"
+              name="Citizen Registration"
+             parent= "menu_citizen_root"/>
+     <!-- Citizen Services-->
+
+      <menuitem id="menu_citizen_services"
+              name="Citizen Services"
+             parent= "menu_citizen_root"/>
+
+</odoo>

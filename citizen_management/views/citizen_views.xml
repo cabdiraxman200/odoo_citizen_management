@@ -1,0 +1,96 @@
+<odoo>
+    <!-- Citizen Tree View -->
+    <record id="view_citizen_tree" model="ir.ui.view">
+        <field name="name">citizen.tree</field>
+        <field name="model">citizen.citizen</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" optional="hide"/>
+                <field name="phone" optional="hide"/>
+                <field name="email" optional="hide"/>
+                <field name="gender" optional="hide"/>
+                <field name="job" optional="hide"/>
+                <field name="national_id" optional="hide"/>
+                <field name="birth_date" optional="hide"/>
+                <field name="marital_status" optional="hide"/>
+                <field name="state_id" optional="hide"/>
+                <field name="region_id" optional="hide"/>
+                <field name="district_id" optional="hide"/>
+                <field name="status" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Citizen Form View -->
+    <record id="view_citizen_form" model="ir.ui.view">
+        <field name="name">citizen.form</field>
+        <field name="model">citizen.citizen</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="job"/>
+                            <field name="national_id"/>
+                        </group>
+                        <group>
+                            <field name="birth_date"/>
+                            <field name="marital_status"/>
+                            <field name="state_id"/>
+                        </group>
+                        <group>
+                            <field name="region_id"/>
+                            <field name="district_id"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Citizen Kanban View -->
+    <record id="view_citizen_kanban" model="ir.ui.view">
+        <field name="name">citizen.kanban</field>
+        <field name="model">citizen.citizen</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_title">
+                                <strong><field name="name"/></strong>
+                            </div>
+                            <div>
+                                <span><strong>Gender: </strong><field name="gender"/></span><br/>
+                                <span><strong>Status: </strong><field name="marital_status"/></span><br/>
+                                <span><strong>State: </strong><field name="state_id"/></span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Citizen Action -->
+    <record id="action_citizen" model="ir.actions.act_window">
+        <field name="name">Citizens</field>
+        <field name="res_model">citizen.citizen</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_citizen_tree"/>
+    </record>
+
+    <!-- Menu for Citizens -->
+    <menuitem id="menu_citizen"
+              name="Citizens"
+              parent="menu_citizen_master"
+              sequence="1"
+              action="action_citizen"/>
+</odoo>

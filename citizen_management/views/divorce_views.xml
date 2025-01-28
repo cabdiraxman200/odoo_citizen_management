@@ -1,0 +1,59 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_citizen_divorce_tree" model="ir.ui.view">
+        <field name="name">citizen.divorce.tree</field>
+        <field name="model">citizen.divorce</field>
+        <field name="arch" type="xml">
+            <tree string="Divorce Records">
+                <field name="citizen_id"/>
+                <field name="woman_divorce"/>
+                <field name="witness_one"/>
+                <field name="witness_two"/>
+                <field name="reason"/>
+                <field name="dowry_value" readonly="0"/>
+                <field name="divorce_date"/>
+                <field name="divorce_of_money"/>
+
+            </tree>
+        </field>
+    </record>
+    <!-- Form View -->
+    <record id="view_citizen_divorce_form" model="ir.ui.view">
+        <field name="name">citizen.divorce.form</field>
+        <field name="model">citizen.divorce</field>
+        <field name="arch" type="xml">
+            <form string="Divorce Record">
+                <sheet>
+                    <group>
+                        <field name="citizen_id"/>
+                        <field name="woman_divorce"/>
+                        <field name="witness_one"/>
+                        <field name="witness_two"/>
+                        <field name="reason"/>
+                        <field name="dowry"/>
+                        <field name="dowry_value" />
+                        <field name="divorce_date"/>
+                        <field name="divorce_of_money"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_citizen_divorce" model="ir.actions.act_window">
+        <field name="name">Divorce Records</field>
+        <field name="res_model">citizen.divorce</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="citizen_management.view_citizen_divorce_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_create">
+                Click to add a new divorce record.
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_citizen_divorce"
+              name="Divorce Records"
+              parent="menu_citizen_services"
+              action="action_citizen_divorce"/>
+</odoo>

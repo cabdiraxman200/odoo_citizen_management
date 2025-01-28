@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.citizen.state,access_citizen_state,citizen_management.model_citizen_state,citizen_management.group_citizen_location_manager,1,1,1,1
+access.citizen.region,access_citizen_region,citizen_management.model_citizen_region,citizen_management.group_citizen_location_manager,1,1,1,1
+access.citizen.district,access_citizen_district,citizen_management.model_citizen_district,citizen_management.group_citizen_location_manager,1,1,1,1
+access.citizen.citizen,access_citizen_citizen,citizen_management.model_citizen_citizen,citizen_management.group_citizen_admin,1,1,1,1
+access.citizen.invoice,access_citizen_invoice,citizen_management.model_citizen_invoice,base.group_user,1,1,1,1
+access.citizen.birth,access_citizen_birth,citizen_management.model_citizen_birth,citizen_management.group_citizen_admin,1,1,1,1
+access.citizen.death,access_citizen_death,citizen_management.model_citizen_death,citizen_management.group_citizen_admin,1,1,1,1
+access.citizen.marriage,access_citizen_marriage,citizen_management.model_citizen_marriage,citizen_management.group_citizen_admin,1,1,1,1
+access.citizen.divorce,access_citizen_divorce,citizen_management.model_citizen_divorce,citizen_management.group_citizen_admin,1,1,1,1
